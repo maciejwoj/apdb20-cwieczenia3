@@ -1,24 +1,44 @@
-﻿using cwiczenia03.Interfaces;
+﻿using System.Runtime.InteropServices.JavaScript;
+using cwiczenia03.Exceptions;
+using cwiczenia03.Interfaces;
 
 namespace cwiczenia03.Containers;
 
 public abstract class Container : IContainer
 {
-    public double CargoWeight { get; set; }
+    protected double LoadWeight { get; set; }
+    protected double Height { get; set; }
+    protected double Weight { get; set; }
+    protected double MaxLoad { get; set; }
+    protected double Deep { get; set; }
+    protected String SerialNumber { get; set;  }
+    protected string? Kind { get; set; }
+    protected static int Id = 0;
 
-    protected Container(double cargoWeight)
+    protected Container(double weight, double height, double maxLoad,double deep, string kind  )
     {
-        CargoWeight = cargoWeight;
+        Kind = kind;
+        Weight = Weight;
+        Height = height;
+        MaxLoad = maxLoad;
+        Deep = deep;
+        SerialNumber = "KON-" + Kind + "-" +  Id++;
     }
     
     public void Unload()
     {
-        throw new NotImplementedException();
+        LoadWeight = 0;
     }
 
     public virtual void Load(double cargoWeight)
     {
-        CargoWeight = cargoWeight;
-        throw new NotImplementedException();
+        if ((LoadWeight + cargoWeight) > MaxLoad)
+        {
+            throw new OverfillException();
+        }
+        else
+        {
+            LoadWeight += cargoWeight;
+        }
     }
 }
