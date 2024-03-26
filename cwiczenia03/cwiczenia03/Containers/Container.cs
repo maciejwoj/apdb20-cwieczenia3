@@ -6,12 +6,12 @@ namespace cwiczenia03.Containers;
 
 public abstract class Container : IContainer
 {
-    protected double LoadWeight { get; set; }
-    protected double Height { get; set; }
-    protected double Weight { get; set; }
-    protected double MaxLoad { get; set; }
-    protected double Deep { get; set; }
-    protected String SerialNumber { get; set;  }
+    public double LoadWeight { get; set; }
+    public double Height { get; set; }
+    public double Weight { get; set; }
+    public double MaxLoad { get; set; }
+    public double Deep { get; set; }
+    public String SerialNumber { get; set;  }
     protected string? Kind { get; set; }
     protected static int Id = 0;
 
@@ -25,7 +25,7 @@ public abstract class Container : IContainer
         SerialNumber = "KON-" + Kind + "-" +  Id++;
     }
     
-    public void Unload()
+    public virtual void Unload()
     {
         LoadWeight = 0;
     }

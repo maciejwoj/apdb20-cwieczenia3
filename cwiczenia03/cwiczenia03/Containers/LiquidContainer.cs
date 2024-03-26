@@ -7,7 +7,7 @@ public class LiquidContainer : Container, IHazardNotifier
 {
     private bool _isHazardous;
     
-    public LiquidContainer(double weight, double height, double maxLoad,double deep, bool isHazardous, string kind ) : base(weight, height, maxLoad,deep, kind )
+    public LiquidContainer(double weight, double height, double maxLoad,double deep, bool isHazardous, string kind ) : base(weight, height, maxLoad,deep, "L" )
     {
         _isHazardous = isHazardous;
     }
